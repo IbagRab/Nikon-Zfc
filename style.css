@@ -1,0 +1,610 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --accent-color: #FFE600; 
+    --dark-bg: #1a1a1a;     
+    --black-bg: #121212;      
+}
+
+body {
+    background-color: var(--black-bg);
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+section {
+    scroll-margin-top: 90px; 
+}
+
+/* Navigacija */
+header {
+    background-color: #000000;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--accent-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nikon-logo {
+    display: flex;
+    align-items: center;
+}
+
+.nikon-logo .brand {
+    background-color: var(--accent-color);
+    color: #000000;
+    padding: 2px 14px;
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 24px;
+    letter-spacing: -1px;
+    transform: skewX(-10deg); 
+    margin-right: 12px;
+}
+
+.nikon-logo .model-png {
+    height: 32px;           
+    width: auto;            
+    display: inline-block;
+    vertical-align: middle; 
+    margin-left: 10px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 15px;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: clamp(10px, 1vw, 15px);
+    margin-left: 0;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+nav a:hover {
+    color: var(--accent-color);
+}
+
+#opis:target ~ header nav a[href="#opis"],
+#karakteristike:target ~ header nav a[href="#karakteristike"],
+#fotografije:target ~ header nav a[href="#fotografije"],
+#video:target ~ header nav a[href="#video"],
+#recenzije:target ~ header nav a[href="#recenzije"] {
+    color: var(--accent-color) !important;
+    text-shadow: 0 0 8px rgba(255, 230, 0, 0.4); 
+}
+
+/* Hero sekcija */
+.hero {
+    background-color: #0a0a0a;
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('pozadina.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% auto; 
+    
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    border-bottom: 1px solid #333;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.hero h1 span {
+    color: var(--accent-color);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #cccccc;
+    max-width: 600px;
+    margin-bottom: 25px;
+}
+
+.btn {
+    background-color: var(--accent-color);
+    color: #000000;
+    padding: 12px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    background-color: #e6ce00;
+}
+
+main {
+    padding: 60px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.about-text h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--accent-color);
+    padding-left: 15px;
+}
+
+.image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.specs-section {
+    background-color: var(--dark-bg);
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid #222;
+    margin-bottom: 80px;
+}
+
+.specs-section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.specs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.spec-item {
+    padding: 20px;
+    background-color: var(--black-bg);
+    border-top: 3px solid var(--accent-color);
+    border-radius: 4px;
+    text-align: center;
+}
+
+.spec-item h3 {
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+
+/*fotografije*/
+.kolaz-sekcija {
+    margin-bottom: 80px;
+    width: 100%;
+}
+
+
+.kolaz-sekcija h2 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    border-left: 4px solid var(--accent-color);
+    padding-left: 15px;
+}
+
+
+.kolaz {
+    display: flex;            
+    gap: 30px;               
+    overflow-x: auto;         
+    padding: 15px 5px;
+    max-width: 100%;
+    
+
+    scroll-snap-type: x mandatory; 
+}
+
+.kolaz::-webkit-scrollbar {
+    height: 8px;              
+}
+.kolaz::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color); 
+    border-radius: 4px;
+}
+.kolaz::-webkit-scrollbar-track {
+    background-color: #1a1a1a; 
+}
+
+
+.kolaz a {
+    flex: 0 0 calc(33.333% - 20px); 
+    min-width: 280px;               
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+    
+
+    scroll-snap-align: start; 
+}
+
+.kolaz a:hover {
+    transform: scale(1.04);
+}
+
+.kolaz img {
+    width: 100%;
+    height: 220px;       
+    object-fit: cover;   
+    display: block;
+}
+
+
+@media (max-width: 768px) {
+    .kolaz {
+        gap: 15px;       
+    }
+    .kolaz a {
+        flex: 0 0 80%;   
+    }
+}
+
+
+.video-section {
+    margin-bottom: 80px;
+    width: 100%;
+}
+
+.video-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--accent-color); 
+    padding-left: 15px;
+    text-align: left; 
+}
+.video-subtitle {
+    margin-bottom: 20px; 
+    color: #aaa;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; 
+    height: 0;
+    overflow: hidden;
+    max-width: 800px;
+    margin: 0 auto;
+    border: 3px solid var(--dark-bg);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    border-radius: 8px;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+footer {
+    background-color: #000000;
+    text-align: center;
+    padding: 30px;
+    margin-top: 60px;
+    border-top: 1px solid #222;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 15px 3%;
+    }
+
+    .nikon-logo .brand {
+        font-size: 18px;
+    }
+
+    .nikon-logo .model-png {
+        height: 24px;
+    }
+
+    .about-section {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+}
+
+.video-container.yt-small {
+    max-width: 800px;       
+    height: 450px;          
+    padding-bottom: 0;      
+    margin: 0 auto;         
+    margin-top: 0px;
+    border: 2px solid #1a1a1a;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    position: relative;     
+}
+
+.video-container.yt-small iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.gallery-container {
+    grid-column: 1 / -1;
+    margin-top: 50px;
+}
+
+.gallery-container h3 {
+    font-size: 2rem;                      
+    margin-bottom: 30px;                 
+    border-left: 4px solid var(--accent-color); 
+    padding-left: 15px;               
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.spec-gallery {
+    margin-top: 60px;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+}
+
+.photo-card {
+    position: relative;
+    height: 250px;
+    background-color: #222; 
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid #333;
+}
+
+.photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+}
+
+.photo-card:hover img {
+    transform: scale(1.08); 
+}
+
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95); 
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox img {
+    max-width: 85%;
+    max-height: 85%;
+    border-radius: 4px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    border: 2px solid #222;
+}
+
+.close-btn {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+    .photo-grid {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 480px) {
+    .photo-grid {
+        grid-template-columns: 1fr; 
+    }
+}
+
+.equipment-section {
+    margin-bottom: 80px;
+    scroll-margin-top: 90px; 
+}
+
+.equipment-text h2 {
+    font-size: 2rem;                             
+    margin-bottom: 20px;
+    border-left: 4px solid var(--accent-color);    
+    padding-left: 15px;                             
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.equipment-text p {
+    color: #cccccc;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: justify;   
+    margin-bottom: 40px;
+}
+
+.equipment-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    gap: 25px;
+}
+
+.equipment-grid .photo-card {
+    flex: 1 1 calc(33.333% - 25px);
+    min-width: 280px;
+    max-width: calc(33.333% - 25px);
+}
+
+/*komentari i recenzije*/
+.recenzije-sekcija {
+    margin-bottom: 80px;
+    width: 100%;
+}
+
+.recenzije-sekcija h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    border-left: 4px solid #FFE600;
+    padding-left: 15px;
+}
+
+.broj-komentara {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #ffffff;
+    padding-left: 19px;
+}
+
+.forma-okvir {
+    display: flex;
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 4px;
+    border: 1px solid #333333;
+    margin-left: 19px;
+}
+
+.avatar-slika {
+    width: 44px;
+    height: 44px;
+    background-color: #d1d1d1; 
+    margin-right: 15px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden; 
+}
+
+.ikona-glava {
+    width: 14px;
+    height: 14px;
+    background-color: #121212;
+    border-radius: 50%;
+    margin: 6px auto 0 auto;
+}
+
+.ikona-tijelo {
+    width: 26px;
+    height: 20px;
+    background-color: #121212;
+    border-radius: 50% 50% 0 0;
+    margin: 4px auto 0 auto;
+}
+
+.forma-okvir form {
+    flex: 1;
+}
+
+.forma-okvir input[type="text"] {
+    width: 100%;
+    max-width: 250px;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #121212;
+    border: 1px solid #333333;
+    color: #ffffff;
+    display: block;
+}
+
+.forma-okvir textarea {
+    width: 100%;
+    height: 100px;
+    padding: 12px;
+    background-color: #121212;
+    border: 1px solid #333333;
+    color: #ffffff;
+    display: block;
+    margin-bottom: 15px;
+    resize: none;
+    font-family: inherit;
+}
+
+.gumb-desno {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.forma-okvir button {
+    background-color: #DCDCDC;
+    color: #121212;
+    padding: 10px 25px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+.forma-okvir button:hover {
+    background-color: #cccccc;
+}
+
