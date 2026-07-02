@@ -17,12 +17,14 @@
         <nav>
             <a href="#opis">Opis</a>
             <a href="#karakteristike">Karakteristike</a>
+            <a href="#fotografije">Fotografije</a>
             <a href="#video">Video</a>
+            <a href="#recenzije">Komentari</a>
         </nav>
     </header>
 
     <section class="hero">
-        <h1>Klasika u <span>Digitalnom</span> Dobu</h1>
+        <h1> KLASIKA U <span>DIGITALNOM</span> DOBU</h1>
         <p>Uhvatite ključne trenutke s fotoaparatom koji spaja legendarni retro dizajn i vrhunsku tehnologiju Z serije.</p>
         <a href="#video" class="btn">Pogledaj Video</a>
     </section>
@@ -38,7 +40,7 @@
             </div>
             
             <div class="image-placeholder">
-                <img src="prednja.png" alt="Nikon Zfc prednja strana">
+                <img id="kameraHover" src="prednja.png" alt="Nikon Zfc prednja strana">
             </div>
         
             <div class="gallery-container">
@@ -64,23 +66,34 @@
                     </div>
                 </div>
             </div>
-
-            <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-                <span class="close-btn">&times;</span>
-                <img id="lightbox-img" src="" alt="Veliki prikaz">
-            </div>
-
-            <script>
-                function openLightbox(element) {
-                    const imgSrc = element.querySelector('img').src;
-                    document.getElementById('lightbox-img').src = imgSrc;
-                    document.getElementById('lightbox').classList.add('visible');
-                }
-                function closeLightbox() {
-                    document.getElementById('lightbox').classList.remove('visible');
-                }
-            </script>
         </section>
+		
+		  <script>
+        const slika = document.getElementById("kameraHover");
+
+        const slike = [
+            "prednja.png",
+            "lijeva1.png",
+			"zadnja1.png",
+            "desna1.png",
+        ];
+
+        let index = 0;
+        let interval;
+
+        slika.addEventListener("mouseenter", () => {
+            interval = setInterval(() => {
+                index = (index + 1) % slike.length;
+                slika.src = slike[index];
+            }, 800);
+        });
+
+        slika.addEventListener("mouseleave", () => {
+            clearInterval(interval);
+            slika.src = slike[0];
+            index = 0;
+        });
+    </script>
 
         <section id="karakteristike" class="specs-section">
             <h2>Tehničke Karakteristike</h2>
@@ -102,69 +115,64 @@
                     <p>Zakretni dodirni LCD zaslon</p>
                 </div>
             </div>
-            
-            <div class="gallery-container spec-gallery">
-                <div class="photo-grid">
-                    <div class="photo-card" onclick="openLightbox(this)"><img src="prva.jpg" alt="Detalj 7"><div class="photo-overlay">Pogledaj sliku</div></div>
-                    <div class="photo-card" onclick="openLightbox(this)"><img src="druga.jpg" alt="Detalj 8"><div class="photo-overlay">Pogledaj sliku</div></div>
-                    <div class="photo-card" onclick="openLightbox(this)"><img src="treca.jpg" alt="Detalj 9"><div class="photo-overlay">Pogledaj sliku</div></div>
-                </div>
-            </div>
         </section>
 
-        <section id="oprema" class="equipment-section">
-            <div class="equipment-text">
-                <h2>Sadržaj Pakiranja</h2>
-                <p>U originalnom tvorničkom pakiranju Nikon Zfc modela dolazi sve što vam je potrebno za trenutni početak snimanja. Uz samo kućište fotoaparata, unutar kutije nalazi se originalni punjač i robusna litij-ionska baterija, zaštitni poklopac kućišta i objektiva koji čuva senzor od prašine, te prepoznatljivi retro remen za nošenje oko vrata koji osigurava stabilnost i udobnost na terenu.</p>
-            </div>
+        <section id="fotografije" class="kolaz-sekcija">
+           <h2>Fotografirano s Nikon Zfc</h2>
 
-            <div class="gallery-container">
-                <div class="photo-grid equipment-grid">
-                    <div class="photo-card" onclick="openLightbox(this)">
-                        <img src="dodatak1.png">
-                    </div>
-                    <div class="photo-card" onclick="openLightbox(this)">
-                        <img src="dodatak2.png">
-                    </div>
-                    <div class="photo-card" onclick="openLightbox(this)">
-                        <img src="dodatak3.png">
-                    </div>
-                    <div class="photo-card" onclick="openLightbox(this)">
-                        <img src="dodatak4.png">
-                    </div>
-                    <div class="photo-card" onclick="openLightbox(this)">
-                        <img src="dodatak5.png">
-                    </div>
-                </div>
-            </div>
+           <div class="kolaz">
+           <a href="#prikaz-1"><img src="foto1.jpg" alt="Slika 1"></a>
+           <a href="#prikaz-2"><img src="foto2.jpg" alt="Slika 2"></a>
+           <a href="#prikaz-3"><img src="foto3.jpg" alt="Slika 3"></a>
+           <a href="#prikaz-4"><img src="foto4.jpg" alt="Slika 4"></a>
+           <a href="#prikaz-5"><img src="foto5.jpg" alt="Slika 5"></a>
+           <a href="#prikaz-6"><img src="foto6.jpg" alt="Slika 6"></a>
+           <a href="#prikaz-7"><img src="foto7.jpg" alt="Slika 7"></a>
+           <a href="#prikaz-8"><img src="foto8.jpg" alt="Slika 8"></a>
+           <a href="#prikaz-9"><img src="foto9.jpg" alt="Slika 9"></a>
+           <a href="#prikaz-10"><img src="foto10.jpg" alt="Slika 10"></a>
+           </div>
         </section>
-       
-        <section id="video" class="video-section">
-            <div class="video-header">
-                <h2>DIGITALNI MULTIMEDIJ 2</h2>
-                <div class="accent-line"></div>
-            </div>
+		
+		<section id="video" class="video-section">
+            <h2>Video</h2>
             
-            <div class="video-container">
-                <video controls>
-                    <source src="Nikon Zfc.mp4" type="video/mp4">
-                </video>
-            </div>
-
             <div class="video-container yt-small">
-                <iframe 
-                    src="https://www.youtube.com/embed/d34HVxW0aK0" 
-                    title="Nikon Zfc Video Projekt" 
-                    allowfullscreen>
-                 Rama
-                </iframe>
+                
+    <iframe
+        src="https://www.youtube.com/embed/jNQXAC9IVRw"
+        title="Test video"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div>
+        </section>
+		
+		<section id="recenzije" class="recenzije-sekcija">
+            <h2>Komentari i recenzije</h2>
+            
+            <div class="broj-komentara">0 komentara</div>
+
+            <div class="forma-okvir">
+                <div class="avatar-slika">
+                    <div class="ikona-glava"></div>
+                    <div class="ikona-tijelo"></div>
+                </div>
+                
+                <form>
+                    <input type="text" placeholder="Vaše ime..." required>
+                    <textarea placeholder="Napišite komentar ili recenziju..." required></textarea>
+                    <div class="gumb-desno">
+                        <button type="submit">Komentiraj</button>
+                    </div>
+                </form>
             </div>
         </section>
 
     </main>
 
     <footer>
-        <p>&copy;2026 Grafički fakultet Zagreb</p>
+        <p>&copy; Digitalni multimedij 2 2026, Grafički fakultet Zagreb</p>
     </footer>
 
 </body>
